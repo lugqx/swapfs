@@ -1,0 +1,35 @@
+REGEDIT4
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SwapFs]
+
+"ErrorControl"=dword:00000001
+
+"Group"="Filter"
+
+#
+# When to start the driver:
+#	At boot:  Start=1
+#	Manually: Start=3
+#
+"Start"=dword:00000001
+
+"Type"=dword:00000001
+
+#
+# /dev/sda1 in Linux = \\Device\\Harddisk0\\Partition1 in Windows, an extended
+# partition is skipped in the enumeration, a full disk is refered to as Partition0.
+#
+# The driver can use up to nine swap partitions.
+#
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SwapFs\Parameters]
+
+# List the swap partitions here:
+"SwapDevice1"="\\Device\\Harddisk0\\Partition1"
+#"SwapDevice2"="\\Device\\HarddiskX\\PartitionY"
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\DOS Devices]
+
+# Assign drive letters to the swap partitions here:
+"S:"="\\Device\\Harddisk0\\Partition1"
+#"T:"="\\Device\\HarddiskX\\PartitionY"

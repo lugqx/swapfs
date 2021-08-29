@@ -1,0 +1,24 @@
+Copy the driver (swapfs.sys) to %systemroot%\system32\drivers\.
+
+The drivers in the sys\obj directory are compiled for Windows XP
+(and all later versions of Windows) while the drivers in the sys\Debug
+and sys\Release directories are compiled for Windows 10 and testsigned
+with a SHA-2 signature.
+
+(chk is the debug version, fre is the normal version,
+i386 is for 32-bit systems and amd64 is for 64-bit systems)
+
+Edit swapfs.reg for your Linux swap partition and drive letter.
+/dev/sda1 in Linux = \\Device\\Harddisk0\\Partition1 in Windows, an extended
+partition is skipped in the enumeration, a full disk is refered to as Partition0.
+The driver can use up to nine swap partitions.
+
+Import swapfs.reg to the Registry.
+
+Reboot. If using an unsigned driver and running on the 64-bit version
+of Windows press F8 and select "Disable driver signature enforcement".
+On later versions of Windows this boot setting can be reached by holding
+down shift before clicking restart.
+
+The drivers are testsigned, you can allow Windows to load testsigned drivers
+with the command "bcdedit /set testsigning on".

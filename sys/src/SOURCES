@@ -1,0 +1,11 @@
+TARGETNAME=swapfs
+TARGETPATH=..\obj\$(DDKBUILDENV)
+TARGETTYPE=DRIVER
+INCLUDES=..\inc
+SOURCES=blockdev.c    \
+        fatformat.c   \
+        fat32format.c \
+        pnp.c         \
+        swapfs.c      \
+        swapfs.rc     \
+        swapfsrec.c
